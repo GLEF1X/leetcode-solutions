@@ -43,9 +43,4 @@ class Solution:
 
     @staticmethod
     def keep_integer_in_bounds_of_32_bits(i: int) -> int:
-        if i < MIN_ALLOWED_INTEGER:
-            return MIN_ALLOWED_INTEGER
-        elif i > MAX_ALLOWED_INTEGER:
-            return MAX_ALLOWED_INTEGER
-
-        return i
+        return max(MIN_ALLOWED_INTEGER, min(i, MAX_ALLOWED_INTEGER))
