@@ -11,8 +11,8 @@ func countNodes(root *TreeNode) int {
 		return 0
 	}
 
-	leftDepth := countLeftDepth(root)
-	rightDepth := countRightDepth(root)
+	leftDepth := countLeftDepthIterative(root)
+	rightDepth := countRightDepthIterative(root)
 
 	if leftDepth == rightDepth {
 		return IntPow(2, leftDepth) - 1
@@ -46,6 +46,17 @@ func countRightDepth(node *TreeNode) int {
 	}
 
 	return 1 + countRightDepth(node.Right)
+}
+
+func countRightDepthIterative(node *TreeNode) int {
+	var count int
+	currentNode := node
+	for currentNode != nil {
+		count++
+		currentNode = currentNode.Right
+	}
+
+	return count
 }
 
 func IntPow(base, exp int) int {
