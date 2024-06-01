@@ -25,22 +25,18 @@ function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
     const queueQ = [q] as TreeNode[]
     while(queueP.length && queueQ.length) {
         const [qNode, pNode] = [queueQ.shift(), queueP.shift()]
-        if (!!qNode !== !!pNode) {
-            return false
-        }
+        if (!!qNode !== !!pNode) return false
         if (!qNode) return true
 
-        if (qNode.val !== pNode.val) {
-            return false
-        }
-        if (!!qNode.left !== !!pNode.left) return false
-        if (!!qNode.right !== !!pNode.right) return false
+        if (qNode.val !== pNode.val) return false
 
+        if (!!qNode.left !== !!pNode.left) return false
         if (qNode.left) {
             queueQ.push(qNode.left)
             queueP.push(pNode.left)
         }
 
+        if (!!qNode.right !== !!pNode.right) return false
         if (qNode.right) {
             queueQ.push(qNode.right)
             queueP.push(pNode.right)
