@@ -3,15 +3,19 @@
  * @return {number}
  */
 var majorityElement = function (nums) {
-    nums.sort()
-    const threshold = Math.ceil(nums.length / 2)
-    let counter = 0;
+    let count = 0, candidate = 0;
+
     for (const num of nums) {
-        counter++
-        if (counter == threshold) {
-            return num
+        if (count === 0) {
+            candidate = num
+        }
+
+        if (num === candidate) {
+            count++
+        } else {
+            count--
         }
     }
 
-    return 0
-};
+    return candidate
+ };
