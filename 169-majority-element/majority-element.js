@@ -3,18 +3,15 @@
  * @return {number}
  */
 var majorityElement = function (nums) {
-  const table = {};
-
-  for (const num of nums) {
-    table[num] = (table[num] ?? 0) + 1;
-  }
-
-  let pair = [0, 0];
-  for (const [key, val] of Object.entries(table)) {
-    if (val > pair[1]) {
-      pair = [key, val];
+    nums.sort()
+    const threshold = Math.ceil(nums.length / 2)
+    let counter = 0;
+    for (const num of nums) {
+        counter++
+        if (counter == threshold) {
+            return num
+        }
     }
-  }
 
-  return pair[0];
+    return 0
 };
