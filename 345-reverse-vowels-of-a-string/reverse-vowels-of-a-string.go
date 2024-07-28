@@ -1,12 +1,8 @@
 import "strings"
 
 func reverseVowels(s string) string {
-	// leetcode
-	// [e e o e]
-	// [e o e e]
 	start, end := 0, len(s)-1
 	var startReadyForSwap, endReadyForSwap bool
-	// var sb strings.Builder
 	b := []byte(s)
 
 	for start < end {
@@ -21,8 +17,7 @@ func reverseVowels(s string) string {
 		}
 
 		if !startReadyForSwap {
-			charFromStart := strings.ToLower(string(b[start]))
-			if charFromStart == "a" || charFromStart == "e" || charFromStart == "i" || charFromStart == "o" || charFromStart == "u" {
+			if isVowel(b[start]){
 				startReadyForSwap = true
 			} else {
 				start++
@@ -31,8 +26,7 @@ func reverseVowels(s string) string {
 		}
 
 		if !endReadyForSwap {
-			charFromEnd := strings.ToLower(string(b[end]))
-			if charFromEnd == "a" || charFromEnd == "e" || charFromEnd == "i" || charFromEnd == "o" || charFromEnd == "u" {
+			if isVowel(b[end]) {
 				endReadyForSwap = true
 			} else {
 				end--
@@ -42,4 +36,10 @@ func reverseVowels(s string) string {
 
 	}
 	return string(b)
+}
+
+
+func isVowel(b byte) bool {
+     char := strings.ToLower(string(b))
+     return char == "a" || char == "e" || char == "i" || char == "o" || char == "u"
 }
